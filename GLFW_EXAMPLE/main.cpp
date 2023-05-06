@@ -131,8 +131,10 @@
         //TODO: Set texture parameters with glTexParameteri(...)
 
         //Set a background color  
-        glClearColor(0.0f, 0.0f, 1.0f, 0.0f);  
-      
+        // Clear color set to linear gradient from red to blue
+        glClearColor(1.0f, 1.0f, 1.0f, 1.0f);  // Start color: red
+        glClear(GL_COLOR_BUFFER_BIT);
+
         //Main Loop  
         do  
         {  
@@ -140,6 +142,54 @@
             glClear(GL_COLOR_BUFFER_BIT); 
             
             //TODO: Draw the graphics
+            // Define the vertex data for the triangle
+            GLfloat vertices[] = {
+                0.0f, 0.5f, 0.0f,
+                0.5f, -0.5f, 0.0f,
+                -0.5f, -0.5f, 0.0f
+            };
+
+            // Bind the vertex data to the vertex buffer object
+            GLuint vbo;
+            glGenBuffers(1, &vbo);
+            glBindBuffer(GL_ARRAY_BUFFER, vbo);
+            glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+            // Compile and link the vertex and fragment shaders into a shader program
+            const char* vertexShaderSource = "#version 330 core\n"
+                "layout (location = 0) in vec3 aPos;\n"
+                "void main()\n"
+                "{\n"
+                "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+                "}\0";
+            const char* fragmentShaderSource = "#version 330 core\n"
+                "out vec4 FragColor;\n"
+                "void main()\n"
+                "{\n"
+                "   FragColor = vec4(0.0f, 0.0f, 1.0f, 1.0f);\n"
+                "}\n\0";
+
+            GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+            glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
+            glCompileShader(vertexShader);
+
+            GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+            glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
+            glCompileShader(fragmentShader);
+
+            GLuint shaderProgram = glCreateProgram();
+            glAttachShader(shaderProgram, vertexShader);
+            glAttachShader(shaderProgram, fragmentShader);
+            glLinkProgram(shaderProgram);
+
+            // Link the vertex data to the shader program
+            glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
+            glEnableVertexAttribArray(0);
+
+            // Define how the triangle should be drawn
+            glUseProgram(shaderProgram);
+            glDrawArrays(GL_TRIANGLES, 0, 3);
+
 
             
             //Swap buffers  
