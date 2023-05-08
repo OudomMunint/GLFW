@@ -31,5 +31,11 @@
     <None Include="shader.vert">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\..\..\Downloads\taa.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\Downloads\taa.vert">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
