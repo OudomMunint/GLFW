@@ -1,5 +1,5 @@
     //Include GLEW  
-    #define GLEW_STATIC
+    //#define GLEW_STATIC
 	
 	//Library for loading textures (Simple OpenGL Image Library)
 	#include <SOIL.h>
@@ -104,19 +104,57 @@
         
         //TODO: create and bind element buffer
         
-        //Example:load shader source file
+       // Load the TAA vertex shader from file
+        std::ifstream vertIn("taa.vert");
+        std::string vertContents((std::istreambuf_iterator<char>(vertIn)),
+            std::istreambuf_iterator<char>());
+        const char* vertSource = vertContents.c_str();
+
+        // Compile the TAA vertex shader
+        GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+        glShaderSource(vertexShader, 1, &vertSource, NULL);
+        glCompileShader(vertexShader);
+
+        // Check for compilation errors
+        GLint success;
+        GLchar infoLog[512];
+        glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
+        if (!success) {
+            glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
+            std::cerr << "Error compiling TAA vertex shader: " << infoLog << std::endl;
+        }
+
+        // Load the TAA fragment shader from file
+        std::ifstream fragIn("taa.frag");
+        std::string fragContents((std::istreambuf_iterator<char>(fragIn)),
+            std::istreambuf_iterator<char>());
+        const char* fragSource = fragContents.c_str();
+
+        // Compile the TAA fragment shader
+        GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+        glShaderSource(fragmentShader, 1, &fragSource, NULL);
+        glCompileShader(fragmentShader);
+
+        // Check for compilation errors
+        glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
+        if (!success) {
+            glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
+            std::cerr << "Error compiling TAA fragment shader: " << infoLog << std::endl;
+        }
+
         std::ifstream in("shader.vert");
         std::string contents((std::istreambuf_iterator<char>(in)), 
                               std::istreambuf_iterator<char>());
-        const char* vertSource = contents.c_str();
+        const char* vertSource2 = contents.c_str();
 
         //Example: compile a shader source file for vertex shading
-        GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+        GLuint vertexShader2 = glCreateShader(GL_VERTEX_SHADER);
         glShaderSource(vertexShader, 1, &vertSource, NULL);
         glCompileShader(vertexShader);
         
         //Example: check that the shader compiled and print any errors
         getShaderCompileStatus(vertexShader);
+        getShaderCompileStatus(fragmentShader);
 
         //TODO: load and compile fragment shader shader.frag
 
