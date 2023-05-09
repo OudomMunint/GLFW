@@ -1,4 +1,4 @@
-# GLFW
+# GLFW ![OpenGL](https://img.shields.io/badge/OpenGL-%23FFFFFF.svg?style=for-the-badge&logo=opengl)
 ## GLFW &amp; SOIL Playground
 # Dependencies / Requirements
 - `GLFW` = `OpenGL 3+`
