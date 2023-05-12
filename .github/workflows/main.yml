@@ -1,21 +1,44 @@
-name: GLFW CI
+name: GLFW Build
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    
+    runs-on: windows-latest
+
     steps:
     - uses: actions/checkout@v2
       
-    - name: Install dependencies
-      run: sudo apt-get install -y libglfw3-dev
-      
-    - name: Build solution
-      run: |
-        msbuild GLFW_EXAMPLE.sln /p:Configuration=Release
+    - name: Install Node.js v16
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16.x'
         
-    - name: Test project
+    - name: Install Visual Studio Build Tools
       run: |
-        # Add your test command here.
+        choco install visualstudio2019buildtools --package-parameters "--includeRecommended --includeOptional" -y
+        choco install visualstudio2019-workload-vctools -y
+      
+    - name: Install C++ Build Tools
+      run: |
+        vswhere -latest -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath | Out-File -Encoding utf8 vswhere.txt
+        $VSINSTALLPATH = Get-Content vswhere.txt | Select-Object -Last 1
+        del vswhere.txt
+        $VCTOOLSINSTALLPATH = Join-Path -Path $VSINSTALLPATH -ChildPath "VC\Auxiliary\Build"
+        if (!(Test-Path $VCTOOLSINSTALLPATH)) {New-Item $VCTOOLSINSTALLPATH -Type Directory}
+        if (!(Test-Path "$VCTOOLSINSTALLPATH\Microsoft.Cpp.Default.props")) {Copy-Item "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.29.30037\bin\Hostx64\x64\Microsoft.Cpp.Default.props" "$VCTOOLSINSTALLPATH\"}
+
+    - name: Restore dependencies
+      run: |
+        cd GLFW_EXAMPLE
+        vcpkg install glfw3:x64-windows
+        vcpkg install glew:x64-windows
+      
+    - name: Build Proj
+      run: |
+        cd GLFW_EXAMPLE
+        MSBuild.exe GLFW_EXAMPLE.sln /t:Build /p:Configuration=Release /p:Platform=x64
