@@ -1,0 +1,21 @@
+name: GLFW CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Install dependencies
+      run: sudo apt-get install -y libglfw3-dev
+      
+    - name: Build solution
+      run: |
+        msbuild GLFW_EXAMPLE.sln /p:Configuration=Release
+        
+    - name: Test project
+      run: |
+        # Add your test command here.
