@@ -34,7 +34,7 @@ jobs:
         vcpkg install glew:x64-windows
         
     - name: Install MSBuild
-      run: choco install msbuild
+      run: choco install msbuild --package-parameters "--pre" -y
       
     - name: Build Proj
       run: |
