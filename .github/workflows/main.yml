@@ -34,7 +34,9 @@ jobs:
         vcpkg install glew:x64-windows
         
     - name: Install MSBuild
-      run: choco install msbuild --package-parameters "--pre" -y
+      run: |
+          choco install msbuild --version 15.0.27014.1 --pre -y
+          set PATH=%PATH%;C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\15.0\bin
       
     - name: Build Proj
       run: |
