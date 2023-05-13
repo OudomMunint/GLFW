@@ -33,6 +33,11 @@ jobs:
         vcpkg install glfw3:x64-windows
         vcpkg install glew:x64-windows
         
+    - name: Install MSBuild
+      run: |
+          choco install msbuild --version 15.0.27014.1 --pre -y
+          setx PATH "%PATH%;C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild"
+      
     - name: Build Proj
       run: |
         cd GLFW_EXAMPLE
