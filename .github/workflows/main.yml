@@ -25,12 +25,7 @@ jobs:
       
     - name: Install C++ Build Tools
       run: |
-        vswhere -latest -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath | Out-File -Encoding utf8 vswhere.txt
-        $VSINSTALLPATH = Get-Content vswhere.txt | Select-Object -Last 1
-        del vswhere.txt
-        $VCTOOLSINSTALLPATH = Join-Path -Path $VSINSTALLPATH -ChildPath "VC\Auxiliary\Build"
-        if (!(Test-Path $VCTOOLSINSTALLPATH)) {New-Item $VCTOOLSINSTALLPATH -Type Directory}
-        if (!(Test-Path "$VCTOOLSINSTALLPATH\Microsoft.Cpp.Default.props")) {Copy-Item "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.29.30037\bin\Hostx64\x64\Microsoft.Cpp.Default.props" "$VCTOOLSINSTALLPATH\"}
+        choco install visualstudio2022buildtools --package-parameters "--includeRecommended --includeOptional" -y
 
     - name: Restore dependencies
       run: |
