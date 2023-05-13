@@ -32,6 +32,9 @@ jobs:
         cd GLFW_EXAMPLE
         vcpkg install glfw3:x64-windows
         vcpkg install glew:x64-windows
+        
+    - name: Install MSBuild
+      run: choco install msbuild
       
     - name: Build Proj
       run: |
