@@ -35,7 +35,7 @@ jobs:
         
     - name: Install MSBuild
       run: |
-          choco install msbuild --version 15.0.27014.1 --pre -y
+          choco install msbuild
           setx PATH "%PATH%;C:\Program Files (x86)\MSBuild"
       
     - name: Build Proj
