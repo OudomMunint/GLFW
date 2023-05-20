@@ -58,7 +58,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(ProjectDir)\..\Debug;$(ProjectDir)\glew\lib;$(ProjectDir)\glfw\lib-msvc100;C:\Users\OudomMunintPannha\Desktop\GLFW\GLFW_EXAMPLE\glew;C:\Users\OudomMunintPannha\Desktop\GLFW\GLFW_EXAMPLE\glfw;C:\Users\OudomMunintPannha\Desktop\GLFW\GLFW_EXAMPLE\soil;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>legacy_stdio_definitions.lib;SOIL.lib;opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>legacy_stdio_definitions.lib;opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
