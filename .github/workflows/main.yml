@@ -41,6 +41,4 @@ jobs:
     - name: Build Proj
       run: |
           cd GLFW_EXAMPLE
-          - name: Build Proj
-          cd GLFW_EXAMPLE
           GLFW_EXAMPLE.sln /t:Build /p:Configuration=Debug /p:Platform=x64
