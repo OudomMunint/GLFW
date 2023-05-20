@@ -2,7 +2,7 @@
     //#define GLEW_STATIC
 	
 	//Library for loading textures (Simple OpenGL Image Library)
-	#include <SOIL.h>
+	/*#include <SOIL.h>*/
 
     #include <GL/glew.h>  
 
