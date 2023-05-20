@@ -1,4 +1,4 @@
-name: CI
+name: CI-Build
 
 on:
   push:
@@ -14,12 +14,18 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+    - name: Checkout Repo
+      uses: actions/checkout@v3
 
     - name: Set up MSBuild
       uses: microsoft/setup-msbuild@v1.0.2
-
+      
+    - name: Restore dependencies
+      run: |
+        cd GLFW_EXAMPLE
+        vcpkg install glfw3:x64-windows
+        vcpkg install glew:x64-windows
+        
     - name: Restore NuGet packages
       run: nuget restore GLFW_Example.sln
 
