@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  build:
+  CI-Build:
 
     runs-on: windows-latest
 
