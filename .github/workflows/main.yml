@@ -1,54 +1,27 @@
-name: GLFW Build
+name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - main
   pull_request:
-    branches: [ master ]
+    branches:
+      - main
 
 jobs:
   build:
+
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v3
-      
-    - name: Install Node.js v18
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18.x'
-        
-    - name: Install Visual Studio Build Tools
-      run: |
-        choco install visualstudio2019buildtools --package-parameters "--includeRecommended --includeOptional" -y
-        choco install visualstudio2019-workload-vctools -y
-      
-    - name: Install C++ Build Tools
-      run: |
-        choco install visualstudio2022buildtools --package-parameters "--includeRecommended --includeOptional" -y
-
-    - name: Restore dependencies
-      run: |
-        cd GLFW_EXAMPLE
-        vcpkg install glfw3:x64-windows
-        vcpkg install glew:x64-windows
-    
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up CMake
-      uses: actions/setup-cmake@v1
-      with:
-        cmake-version: '3.21'
+    - name: Set up MSBuild
+      uses: microsoft/setup-msbuild@v1.0.2
 
-    - name: Install dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y libglfw3-dev
-        
+    - name: Restore NuGet packages
+      run: nuget restore GLFW_Example.sln
+
     - name: Build project
-      run: |
-        mkdir build
-        cd build
-        cmake ..
-        cmake --build . --target GLFW_Example
+      run: msbuild GLFW_Example.sln /p:Configuration=Release
