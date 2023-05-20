@@ -41,4 +41,6 @@ jobs:
     - name: Build Proj
       run: |
           cd GLFW_EXAMPLE
-          "C:\Windows\Microsoft.NET\Framework64\v2.0.50727" GLFW_EXAMPLE.sln /t:Build /p:Configuration=Debug /p:Platform=x64
+          - name: Build Proj
+          cd GLFW_EXAMPLE
+          GLFW_EXAMPLE.sln /t:Build /p:Configuration=Debug /p:Platform=x64
