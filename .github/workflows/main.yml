@@ -39,6 +39,4 @@ jobs:
           setx PATH "%PATH%;C:\Program Files (x86)\MSBuild"
           
     - name: Build Proj
-      run: |
-          cd GLFW_EXAMPLE
-          GLFW_EXAMPLE.sln /t:Build /p:Configuration=Debug /p:Platform=x64
+      run: msbuild GLFW_EXAMPLE.sln /t:Build /p:Configuration=Debug /p:Platform=x64
