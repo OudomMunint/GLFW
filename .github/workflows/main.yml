@@ -37,6 +37,8 @@ jobs:
       run: |
           choco install msbuild
           setx PATH "%PATH%;C:\Program Files (x86)\MSBuild"
-      
+          
     - name: Build Proj
-      run: msbuild GLFW_EXAMPLE.sln /t:Build /p:Configuration=Debug /p:Platform=x64
+      run: |
+          cd GLFW_EXAMPLE
+          "C:\Windows\Microsoft.NET\Framework64\v2.0.50727" GLFW_EXAMPLE.sln /t:Build /p:Configuration=Debug /p:Platform=x64
