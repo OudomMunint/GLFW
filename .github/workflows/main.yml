@@ -24,4 +24,4 @@ jobs:
       run: nuget restore GLFW_Example.sln
 
     - name: Build project
-      run: msbuild GLFW_Example.sln /p:Configuration=Release
+      run: msbuild GLFW_Example.sln /p:Configuration=Debug
