@@ -1,4 +1,4 @@
-# GLFW [![GLFW Build](https://github.com/OudomMunint/GLFW/actions/workflows/main.yml/badge.svg)](https://github.com/OudomMunint/GLFW/actions/workflows/main.yml) [![CodeQL](https://github.com/OudomMunint/GLFW/actions/workflows/codeql.yml/badge.svg)](https://github.com/OudomMunint/GLFW/actions/workflows/codeql.yml)
+# GLFW [![GLFW Build](https://github.com/OudomMunint/GLFW/actions/workflows/main.yml/badge.svg)](https://github.com/OudomMunint/GLFW/actions/workflows/main.yml) [![CodeQL](https://github.com/OudomMunint/GLFW/actions/workflows/codeql.yml/badge.svg)](https://github.com/OudomMunint/GLFW/actions/workflows/codeql.yml) ![maintenance-status](https://img.shields.io/badge/maintenance-passively--maintained-yellowgreen.svg)
 ![OpenGL](https://img.shields.io/badge/OpenGL-%23FFFFFF.svg?style=for-the-badge&logo=opengl) 
 ## GLFW &amp; SOIL Playground
 # Dependencies / Requirements
