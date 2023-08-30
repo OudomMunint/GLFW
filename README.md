@@ -21,6 +21,7 @@
 - MSBuild: Any version of MSBuild.
 
 ## Getting started
+### !!! This project will not run on mac
 ### First time setup
 - Clone the repository
 - Download [GLFW](https://www.glfw.org/download.html) and [SOIL](https://www.lonesock.net/soil.html)
