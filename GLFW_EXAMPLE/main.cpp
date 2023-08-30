@@ -234,6 +234,21 @@
             glfwSwapBuffers(window);  
             //Get and organize events, like keyboard and mouse input, window resizing, etc...  
             glfwPollEvents();  
+
+            // FPS counter
+            static double previousSeconds = glfwGetTime();
+            static int frameCount;
+            double currentSeconds = glfwGetTime();
+            double elapsedSeconds = currentSeconds - previousSeconds;
+            if (elapsedSeconds > 0.25) {
+                previousSeconds = currentSeconds;
+                double fps = (double)frameCount / elapsedSeconds;
+                char tmp[128];
+                sprintf(tmp, "opengl @ fps: %.2f", fps);
+                glfwSetWindowTitle(window, tmp);
+                frameCount = 0;
+            }
+            frameCount++;     
       
         } //Check if the ESC key had been pressed or if the window had been closed  
         while (!glfwWindowShouldClose(window));  
