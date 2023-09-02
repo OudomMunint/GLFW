@@ -67,7 +67,7 @@
         GLFWwindow* window;  
       
         //Create a window and create its OpenGL context  
-        window = glfwCreateWindow(640, 480, "Test Window", NULL, NULL);  
+        window = glfwCreateWindow(1280, 720, "Test Window", NULL, NULL);  
       
         //If the window couldn't be created  
         if (!window)  
@@ -169,8 +169,7 @@
         //TODO: Set texture parameters with glTexParameteri(...)
 
         //Set a background color  
-        // Clear color set to linear gradient from red to blue
-        glClearColor(1.0f, 1.0f, 1.0f, 1.0f);  // Start color: red
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         //Main Loop  
@@ -178,13 +177,18 @@
         {  
             //Clear color buffer  
             glClear(GL_COLOR_BUFFER_BIT); 
-            
-            //TODO: Draw the graphics
-            // Define the vertex data for the triangle
+
+            // draw the amd vega logo
             GLfloat vertices[] = {
-                0.0f, 0.5f, 0.0f,
-                0.5f, -0.5f, 0.0f,
-                -0.5f, -0.5f, 0.0f
+                // Triangle 1
+                -0.5f, 0.5f, 0.0f,
+                0.0f, -0.5f, 0.0f,
+                -1.0f, -0.5f, 0.0f,
+
+                // Triangle 2
+                0.0f, -0.5f, 0.0f,
+                0.5f, 0.5f, 0.0f,
+                1.0f, -0.5f, 0.0f
             };
 
             // Bind the vertex data to the vertex buffer object
@@ -226,10 +230,8 @@
 
             // Define how the triangle should be drawn
             glUseProgram(shaderProgram);
-            glDrawArrays(GL_TRIANGLES, 0, 3);
-
-
-            
+            glDrawArrays(GL_TRIANGLES, 0, 6);
+      
             //Swap buffers  
             glfwSwapBuffers(window);  
             //Get and organize events, like keyboard and mouse input, window resizing, etc...  
@@ -248,7 +250,7 @@
                 glfwSetWindowTitle(window, tmp);
                 frameCount = 0;
             }
-            frameCount++;     
+            frameCount++;
       
         } //Check if the ESC key had been pressed or if the window had been closed  
         while (!glfwWindowShouldClose(window));  
