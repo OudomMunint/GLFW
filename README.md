@@ -10,7 +10,6 @@
 ## CodeQL :mag:
 [![CodeQL](https://github.com/OudomMunint/GLFW/actions/workflows/codeql.yml/badge.svg)](https://github.com/OudomMunint/GLFW/actions/workflows/codeql.yml)
 
-## GLFW &amp; SOIL Playground
 # Dependencies / Requirements
 - `GLFW` = `OpenGL 3+`
 - `GLEW` = `OpenGL 3+`
