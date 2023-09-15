@@ -34,5 +34,5 @@
 - Set the startup project to `GLFW`
 - Run the project in `debug` mode
 - If project fails to build with dependency errors, check the `include` and `lib` directories or try running NuGet package restore with `Ctrl + Shift + R`
-- If build is successful, there should be a window opened with a triangle in it. <br> <br>
-<img src="triangle.png"/>
+- If build is successful, there should be a window opened with a triangle & an fps counter. <br> <br>
+<img src="window.png"/>
