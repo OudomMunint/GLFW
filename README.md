@@ -24,15 +24,19 @@
 ### First time setup
 - Clone the repository
 - Download [GLFW](https://www.glfw.org/download.html) and [SOIL](https://www.lonesock.net/soil.html)
-- Extract the files and copy the `include` folder to `C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include`
-- Copy the `lib` folder to `C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\lib`
+- Extract the files and copy the `include` folder to `C:\Visual Studio\{Year}\{Version}\VC\Tools\MSVC\{Build}\include`
+- Copy the `lib` folder to `C:\Visual Studio\{Year}\{Version}\VC\Tools\MSVC\{Build}\lib`
 - Copy the `dll` folder to `C:\Windows\System32`
 - Open the project in Visual Studio and build the project
-- If MSBuild is not installed, install it from [here](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019)
-- Or modify visual studio installer and install MSBuild
+- If MSBuild is not installed, modify visual studio installer and install MSBuild
 - Open the project in Visual Studio and build the project
 - Set the startup project to `GLFW`
 - Run the project in `debug` mode
-- If project fails to build with dependency errors, check the `include` and `lib` directories or try running NuGet package restore with `Ctrl + Shift + R`
+- If project fails to build with dependency errors, try to run NuGet package restore
 - If build is successful, there should be a window opened with a triangle & an fps counter. <br> <br>
+### VsCode
+- Install [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) extension
+- Generate the `launch.json` and `tasks.json` files by pressing `F5` and select `C++ (GDB/LLDB)`
+- Run the project in `debug` mode
+<br> <br>
 <img src="window.png"/>
