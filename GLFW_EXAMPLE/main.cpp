@@ -60,7 +60,7 @@
         //Set the GLFW window creation hints - these are optional  
         //glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); //Request a specific OpenGL version  
         //glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2); //Request a specific OpenGL version  
-        //glfwWindowHint(GLFW_SAMPLES, 4); //Request 4x antialiasing  
+        glfwWindowHint(GLFW_SAMPLES, 16); //Request 4x antialiasing  
         //glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);  
       
         //Declare a window object  
@@ -176,7 +176,10 @@
         do  
         {  
             //Clear color buffer  
-            glClear(GL_COLOR_BUFFER_BIT); 
+            glClear(GL_COLOR_BUFFER_BIT);
+
+            //MSAA
+            glEnable(GL_MULTISAMPLE);
 
             // draw the amd vega logo
             GLfloat vertices[] = {
