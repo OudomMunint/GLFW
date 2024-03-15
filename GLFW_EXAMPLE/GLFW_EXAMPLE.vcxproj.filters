@@ -37,5 +37,6 @@
     <None Include="..\..\..\Downloads\taa.vert">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
