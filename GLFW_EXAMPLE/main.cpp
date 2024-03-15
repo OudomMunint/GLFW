@@ -2,7 +2,7 @@
     //#define GLEW_STATIC
 	
 	//Library for loading textures (Simple OpenGL Image Library)
-	/*#include <SOIL.h>*/
+	#include <SOIL.h>
 
     #include <GL/glew.h>  
 
@@ -162,9 +162,26 @@
 
         //TODO: link vertex data (position, colour and texture coords) to shader
 
-        //TODO: Create texture buffer:
+        //TODO: Create texture buffer
+        GLuint texture;
+        glGenTextures(1, &texture);
+        glBindTexture(GL_TEXTURE_2D, texture);
 
         //TODO: Load image into texture buffer
+        int width, height;
+        unsigned char* image = SOIL_load_image("amd_vega_logo.png", &width, &height, 0, SOIL_LOAD_RGB);
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+
+        // Generate mipmaps
+        glGenerateMipmap(GL_TEXTURE_2D);
+
+        SOIL_free_image_data(image);
         
         //TODO: Set texture parameters with glTexParameteri(...)
 
