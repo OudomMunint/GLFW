@@ -1,10 +1,6 @@
 name: CI-Build
 
 on:
-  push:
-    branches:
-      - master
-
   pull_request:
     branches:
       - master
@@ -36,4 +32,4 @@ jobs:
     - name: Create Release
       uses: ncipollo/release-action@v1.14.0
       with:
-        tag: v1.0.5.5
+        tag: v1.0.5.3
