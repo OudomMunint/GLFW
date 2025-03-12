@@ -1,4 +1,4 @@
-# OpenGL, SOIL, GLFW project template
+# OpenGL / SOIL / GLFW starting project template
 ## Feel free to use this as a template for your own projects.
 
 ![OpenGL](https://img.shields.io/badge/OpenGL-%23FFFFFF.svg?style=for-the-badge&logo=opengl) ![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white) ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white)
@@ -21,9 +21,8 @@
 - MSBuild: Any version of MSBuild.
 
 ## Getting started
-### !!! This project will not run on Mac, Visual Studio for Mac doesn't support this project
-### A build pipeline is also setup for this project, as well as a create release step.
-### CodeQL C++ code scanning is also setup for this project.
+### This project will not run on Mac, Visual Studio for Mac doesn't support this project
+### A CI build pipeline is setup for this project, as well as a create release step, CodeQL C++ code scanning is also setup for this project. Find the workflow files in the `.github/workflows` folder. Refer to the badges above for the build and scan status.
 ### First time setup
 - Clone the repository
 - Download [GLFW](https://www.glfw.org/download.html) and [SOIL](https://www.lonesock.net/soil.html)
@@ -43,4 +42,5 @@
 - Generate the `launch.json` and `tasks.json` files by pressing `F5` and select `C++ (GDB/LLDB)`
 - Run the project in `debug` mode
 <br> <br>
-<img src="window.png"/>
+<img src="/Media/window.png"/>
+<img src="/Media/triangle.png"/>
