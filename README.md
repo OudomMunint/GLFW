@@ -42,5 +42,6 @@
 - Generate the `launch.json` and `tasks.json` files by pressing `F5` and select `C++ (GDB/LLDB)`
 - Run the project in `debug` mode
 <br> <br>
-<img src="/Media/window.png"/>
-<img src="/Media/triangle.png"/>
+<img src="Media/window.png"/>
+<br> <br>
+<img src="Media/triangle.png"/>
