@@ -1,9 +1,10 @@
-# OpenGL, SOIL, GLFW playground
+# OpenGL, SOIL, GLFW project template
+## Feel free to use this as a template for your own projects.
 
 ![OpenGL](https://img.shields.io/badge/OpenGL-%23FFFFFF.svg?style=for-the-badge&logo=opengl) ![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white) ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white)
 
-## Maintenace Status :wrench:
-![maintenance-status](https://img.shields.io/badge/maintenance-passively--maintained-yellowgreen.svg)
+## Maintenance Status :wrench:
+![maintenance-status](https://img.shields.io/badge/maintenance-as--is-yellow.svg)
 ## CI Build Status :hammer:
 [![GLFW Build](https://github.com/OudomMunint/GLFW/actions/workflows/main.yml/badge.svg)](https://github.com/OudomMunint/GLFW/actions/workflows/main.yml) 
 
@@ -21,6 +22,8 @@
 
 ## Getting started
 ### !!! This project will not run on Mac, Visual Studio for Mac doesn't support this project
+### A build pipeline is also setup for this project, as well as a create release step.
+### CodeQL C++ code scanning is also setup for this project.
 ### First time setup
 - Clone the repository
 - Download [GLFW](https://www.glfw.org/download.html) and [SOIL](https://www.lonesock.net/soil.html)
@@ -34,6 +37,7 @@
 - Run the project in `debug` mode
 - If project fails to build with dependency errors, try to run NuGet package restore
 - If build is successful, there should be a window opened with a triangle & an fps counter. <br> <br>
+
 ### VsCode
 - Install [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) extension
 - Generate the `launch.json` and `tasks.json` files by pressing `F5` and select `C++ (GDB/LLDB)`
